@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,visualstudiocode,obsidian
-# Edit at https://www.toptal.com/developers/gitignore?templates=swiftpackagemanager,visualstudiocode,obsidian
+# Created by https://www.toptal.com/developers/gitignore/api/obsidian,visualstudiocode,swiftpackagemanager,xcode
+# Edit at https://www.toptal.com/developers/gitignore?templates=obsidian,visualstudiocode,swiftpackagemanager,xcode
 
 ### Obsidian ###
 # config dir
@@ -32,4 +32,21 @@ DerivedData/
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,visualstudiocode,obsidian
+### Xcode ###
+## User settings
+xcuserdata/
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# End of https://www.toptal.com/developers/gitignore/api/obsidian,visualstudiocode,swiftpackagemanager,xcode
