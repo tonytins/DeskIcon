@@ -4,42 +4,14 @@
             "type": "swift",
             "request": "launch",
             "args": [
-                "--version=1.0",
-                "--name=jMemorize",
-                "--comment=Flash card based learning tool",
-                "--path=/opt/jmemorise",
-                "--exec=jmemorize",
-                "--icon=jmemorize",
-                "--categories=Education,Languages,Java"
+                "-v 1.0",
+                "-n jMemorize",
+                "-p /opt/jmemorise",
+                "-e jmemorize",
+                "-i jmemorize",
+                "-c Education,Languages,Java",
+                "-d"
             ],
-            "cwd": "${workspaceFolder:DesktopIcon}",
-            "name": "Debug DesktopIcon",
-            "target": "DesktopIcon",
-            "configuration": "debug",
-            "preLaunchTask": "swift: Build Debug DesktopIcon"
-        },
-        {
-            "type": "swift",
-            "request": "launch",
-            "args": [
-                "--version=1.0",
-                "--name=jMemorize",
-                "--comment=Flash card based learning tool",
-                "--path=/opt/jmemorise",
-                "--exec=jmemorize",
-                "--icon=jmemorize",
-                "--categories=Education,Languages,Java"
-            ],
-            "cwd": "${workspaceFolder:DesktopIcon}",
-            "name": "Release DesktopIcon",
-            "target": "DesktopIcon",
-            "configuration": "release",
-            "preLaunchTask": "swift: Build Release DesktopIcon"
-        },
-        {
-            "type": "swift",
-            "request": "launch",
-            "args": [],
             "cwd": "${workspaceFolder:DesktopIcon}",
             "name": "Debug deskicon",
             "target": "deskicon",
@@ -49,7 +21,15 @@
         {
             "type": "swift",
             "request": "launch",
-            "args": [],
+            "args": [
+                "-v 1.0",
+                "-n jMemorize",
+                "-p /opt/jmemorise",
+                "-e jmemorize",
+                "-i jmemorize",
+                "-c Education,Languages,Java",
+                "-d"
+            ],
             "cwd": "${workspaceFolder:DesktopIcon}",
             "name": "Release deskicon",
             "target": "deskicon",
