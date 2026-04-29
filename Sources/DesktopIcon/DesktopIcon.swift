@@ -4,13 +4,13 @@ import Foundation
 @main
 struct DesktopIcon: ParsableCommand {
     @Option
-    var version: String
+    var version: String = "1.0"
 
     @Option
     var name: String
 
     @Option
-    var comment: String
+    var comment: String = ""
 
     @Option
     var path: String
@@ -22,7 +22,10 @@ struct DesktopIcon: ParsableCommand {
     var icon: String
 
     @Option
-    var categories: String
+    var categories: String = ""
+    
+    @Flag
+    var dryRun: Bool = true // For debugging
 
     mutating func run() throws {
         let environment = ProcessInfo.processInfo.environment
@@ -38,16 +41,23 @@ struct DesktopIcon: ParsableCommand {
         Terminal=false
         Categories=\(categories)
         """
-
-        print(entry)
-        print("\(environment["HOME"]!)//Desktop")
-
-        /* if environment["HOME"] != nil {
-             do {
-                 try entry.write(toFile: "\(environment["HOME"]!)\\Desktop", atomically: true, encoding: .utf8)
-             } catch {
-                 print("Error: \\(error)")
+ 
+        if !dryRun
+        {
+            if environment["HOME"] != nil {
+                 do {
+                     try entry.write(
+                        toFile: "\(environment["HOME"]!)//Desktop",
+                        atomically: true,
+                        encoding: .utf8
+                     )
+                 } catch {
+                     print("Error: \\(error)")
+                 }
              }
-         } */
+        } else {
+            print(entry)
+            print("\(environment["HOME"]!)//Desktop")
+        }
     }
 }
