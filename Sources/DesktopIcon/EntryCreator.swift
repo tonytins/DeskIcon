@@ -2,7 +2,7 @@ import ArgumentParser
 import Foundation
 
 @main
-struct DesktopIcon: ParsableCommand {
+struct EntryCreator: ParsableCommand {
     /// Help descriptions (and VSCode debug example) was grabbed from the Arch Wiki
     /// https://wiki.archlinux.org/title/Desktop_entries
     @Option(name: .shortAndLong, help: "The version of the desktop entry specification to which this file conforms")
@@ -32,13 +32,19 @@ struct DesktopIcon: ParsableCommand {
     @Flag(name: .shortAndLong)
     var dryRun: Bool = false
 
+    /// Print the entry and path below.
     func printEntry(content: String, directory: String) {
-        print(content)
-        print(directory)
+        let sample = """
+        \(content) \
+        === \
+        \(directory)
+        """
+        print(sample)
     }
 
     mutating func run() throws {
         let environment = ProcessInfo.processInfo.environment
+
         let loc = ".local//share//applications"
         let entry = """
         [Desktop Entry]
@@ -51,11 +57,23 @@ struct DesktopIcon: ParsableCommand {
         Terminal=\(terminal)
         Categories=\(categories)
         """
-        let file = "\(environment["HOME"]!)//\(loc)//\(name).desktop"
+        let home = environment["HOME"]!
 
-        #if os(Linux)
-            if !dryRun {
-                if environment["HOME"] != nil {
+        #if os(Windows)
+            home = environment["userprofile"]!
+        #endif
+
+        let file = "\(home)//\(loc)//\(name).desktop"
+
+        switch dryRun {
+        case true:
+            printEntry(content: entry, directory: file)
+        default:
+            #if os(Linux)
+                switch home.isEmpty {
+                case true:
+                    printEntry(content: entry, directory: file)
+                default:
                     do {
                         try entry.write(
                             toFile: file,
@@ -66,11 +84,9 @@ struct DesktopIcon: ParsableCommand {
                         print("Error: \\(error)")
                     }
                 }
-            } else {
+            #else
                 printEntry(content: entry, directory: file)
-            }
-        #else
-            printEntry(content: entry, directory: file)
-        #endif
+            #endif
+        }
     }
 }

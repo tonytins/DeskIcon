@@ -13,10 +13,10 @@
                 "-d"
             ],
             "cwd": "${workspaceFolder:DesktopIcon}",
-            "name": "Debug deskicon",
-            "target": "deskicon",
+            "name": "Debug deskentry",
+            "target": "deskentry",
             "configuration": "debug",
-            "preLaunchTask": "swift: Build Debug deskicon"
+            "preLaunchTask": "swift: Build Debug deskentry"
         },
         {
             "type": "swift",
@@ -31,10 +31,10 @@
                 "-d"
             ],
             "cwd": "${workspaceFolder:DesktopIcon}",
-            "name": "Release deskicon",
-            "target": "deskicon",
+            "name": "Release deskentry",
+            "target": "deskentry",
             "configuration": "release",
-            "preLaunchTask": "swift: Build Release deskicon"
+            "preLaunchTask": "swift: Build Release deskentry"
         }
     ]
 }

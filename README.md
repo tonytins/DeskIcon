@@ -1,11 +1,19 @@
-# DeskIcon
+# DeskEntry
 
-DeskIcon is a simple CLI tool for Linux that streamlines the process of making desktop entries.
+DeskEntry is a simple CLI tool for Linux that streamlines the process of making desktop entries.
+
+## Quick Start
+
+### Prerequisites
+
+- Swift 6 or later
+
+On macOS and Windows, it'll fallback to dry run mode.
 
 ## Usage
 
 ```shell
-$deskicon [--version <version>] --name <name> --path <path> --exec <exec> --icon <icon> --categories <categories> [--terminal] [--dry-run]
+$deskentry [--version <version>] --name <name> --path <path> --exec <exec> --icon <icon> --categories <categories> [--terminal] [--dry-run]
 ```
 
 ```
